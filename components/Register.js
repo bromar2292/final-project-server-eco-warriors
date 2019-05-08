@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View, Button } from "react-native";
 import firebase from "firebase";
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
+// import RadioForm, {
+//   RadioButton,
+//   RadioButtonInput,
+//   RadioButtonLabel
+// } from "react-native-simple-radio-button";
 
 // when a user Registers firebase takes in Email and Password and saves in the "Auth" tab
 // After it is saved in the auth tab (in firebase) to save the rest of the fields in the
@@ -37,7 +37,8 @@ export default class SignUp extends React.Component {
       .then(currentUser => {
         console.log(currentUser.user.uid);
 
-        //here we would create the QR code with the USER uid
+        //here we would create the QR code with the USER uid?
+
         firebase
           .database()
           .ref("users/" + currentUser.user.uid)
@@ -56,6 +57,23 @@ export default class SignUp extends React.Component {
           .catch(error => this.setState({ errorMessage: error.message }));
       });
   };
+
+  // 0. set up fake gmail
+  // 0.1 add to firebase
+  // 0.2 try adding a new user
+  // 1. find out if you can have multiple collections in real time
+  // look at firebase through post man
+  //   figure it out at home?
+  // 2. we need another route to add and subtract points
+  //   2.1 `post /points/${userId}?add=true&points=${point}`
+  // 3. QR codes - generate with url
+  //    3.1 text: userId
+  // 4. business schema's
+  // 5. import json for business's
+  // 6. 'get' route from db
+  //
+
+  // supertest to check api calls
 
   render() {
     return (
@@ -107,13 +125,13 @@ export default class SignUp extends React.Component {
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
         />
-        <RadioForm
+        {/* <RadioForm
           radio_props={radio_props}
           initial={0}
           onPress={value => {
             this.setState({ value: value });
           }}
-        />
+        /> */}
 
         <Button title="Login" onPress={this.navigateToLogin} />
         <Button title="Sign Up" onPress={this.handleSignUp} />

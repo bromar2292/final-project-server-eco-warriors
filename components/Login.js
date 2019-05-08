@@ -1,9 +1,16 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View, Button } from "react-native";
+import firebase from "firebase";
+
 export default class Login extends React.Component {
   state = { email: "", password: "", errorMessage: null };
   handleLogin = () => {
-    // TODO: Firebase stuff...
+    const { email, password } = this.state;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => this.props.navigation.navigate("Home"))
+      .catch(error => this.setState({ errorMessage: error.message }));
     console.log("handleLogin");
   };
   render() {

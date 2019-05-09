@@ -1,5 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, TextInput, View, Button } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
+import { LinearGradient } from "expo";
+import { Button, Text } from "@99xt/first-born";
 import firebase from "firebase";
 // import RadioForm, {
 //   RadioButton,
@@ -45,6 +47,7 @@ export default class SignUp extends React.Component {
           .set({
             userType: this.state.userType,
             ageRange: this.state.ageRange,
+            firstName: this.state.name,
             surname: this.state.surname,
             location: this.state.location,
             points: 0
@@ -77,69 +80,120 @@ export default class SignUp extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Sign Up</Text>
-        {this.state.errorMessage && (
-          <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
-        )}
-        <TextInput
-          placeholder="Email"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={email => this.setState({ email })}
-          value={this.state.email}
-        />
-        <TextInput
-          placeholder="Name"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={name => this.setState({ name })}
-          value={this.state.name}
-        />
-        <TextInput
-          placeholder="Location"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={location => this.setState({ location })}
-          value={this.state.location}
-        />
-        <TextInput
-          placeholder="Age range"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={ageRange => this.setState({ ageRange })}
-          value={this.state.ageRange}
-        />
-        <TextInput
-          placeholder="Surname"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={surname => this.setState({ surname })}
-          value={this.state.surname}
-        />
-        <TextInput
-          secureTextEntry
-          placeholder="Password"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={password => this.setState({ password })}
-          value={this.state.password}
-        />
-        {/* <RadioForm
-          radio_props={radio_props}
-          initial={0}
-          onPress={value => {
-            this.setState({ value: value });
-          }}
-        /> */}
-
-        <Button title="Login" onPress={this.navigateToLogin} />
-        <Button title="Sign Up" onPress={this.handleSignUp} />
-        <Button
-          title="Already have an account? Login"
-          onPress={() => this.props.navigation.navigate("Login")}
-        />
-      </View>
+      <LinearGradient colors={["#a2ea54", "#669335"]} style={{ flex: 1 }}>
+        <View style={styles.container}>
+          {this.state.errorMessage && (
+            <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
+          )}
+          <Text color="white" size="h3">
+            Ecommunity
+          </Text>
+          <TextInput
+            placeholder="Name"
+            placeholderTextColor="white"
+            style={{
+              width: "73%",
+              height: "7%",
+              borderBottomColor: "#FFFFFF",
+              borderBottomWidth: 1
+            }}
+            onChangeText={name => this.setState({ name })}
+            value={this.state.name}
+            autoCapitalize="none"
+          />
+          <TextInput
+            placeholder="Surname"
+            placeholderTextColor="white"
+            style={{
+              width: "73%",
+              height: "7%",
+              borderBottomColor: "#FFFFFF",
+              borderBottomWidth: 1
+            }}
+            onChangeText={surname => this.setState({ surname })}
+            value={this.state.surname}
+            autoCapitalize="none"
+          />
+          <TextInput
+            placeholder="Email"
+            placeholderTextColor="white"
+            style={{
+              width: "73%",
+              height: "7%",
+              borderBottomColor: "#FFFFFF",
+              borderBottomWidth: 1
+            }}
+            autoCapitalize="none"
+            onChangeText={email => this.setState({ email })}
+            value={this.state.email}
+          />
+          <TextInput
+            placeholder="Password"
+            placeholderTextColor="white"
+            secureTextEntry
+            style={{
+              width: "73%",
+              height: "7%",
+              borderBottomColor: "#FFFFFF",
+              borderBottomWidth: 1
+            }}
+            autoCapitalize="none"
+            onChangeText={password => this.setState({ password })}
+            value={this.state.password}
+          />
+          <TextInput
+            placeholder="Age range"
+            placeholderTextColor="white"
+            style={{
+              width: "73%",
+              height: "7%",
+              borderBottomColor: "#FFFFFF",
+              borderBottomWidth: 1
+            }}
+            autoCapitalize="none"
+            onChangeText={ageRange => this.setState({ ageRange })}
+            value={this.state.ageRange}
+          />
+          <TextInput
+            placeholder="Location"
+            placeholderTextColor="white"
+            style={{
+              width: "73%",
+              height: "7%",
+              borderBottomColor: "#FFFFFF",
+              borderBottomWidth: 1,
+              marginBottom: "15%"
+            }}
+            autoCapitalize="none"
+            onChangeText={location => this.setState({ location })}
+            value={this.state.location}
+          />
+          <Button
+            style={{
+              backgroundColor: "white",
+              width: "73%",
+              height: "8%",
+              borderRadius: 30
+            }}
+            onPress={() => this.handleSignUp()}
+          >
+            <Text style={{ color: "black" }}>Sign up</Text>
+          </Button>
+          <Button
+            style={{
+              width: "73%",
+              height: "8%",
+              backgroundColor: "transparent",
+              border: "none"
+            }}
+            onPress={() => this.props.navigation.navigate("Login")}
+          >
+            <Text style={{ color: "black" }}>
+              Already have an account? Login
+            </Text>
+          </Button>
+        </View>
+      </LinearGradient>
     );
   }
 }
@@ -148,12 +202,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
-  },
-  textInput: {
-    height: 40,
-    width: "90%",
-    borderColor: "gray",
-    borderWidth: 1,
-    marginTop: 8
   }
 });

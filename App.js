@@ -1,11 +1,16 @@
 import React from "react";
 import { StyleSheet, Platform, Image, Text, View } from "react-native";
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import {
+  createAppContainer,
+  createSwitchNavigator,
+  createStackNavigator
+} from "react-navigation";
 // import the different screens
 import Loading from "./pages/Loading";
 import SignUp from "./pages/Register";
 import Login from "./pages/Login";
 import Main from "./pages/HomePage";
+import Interests from "./pages/Interests";
 
 const AppNavigator = createAppContainer(
   createSwitchNavigator(
@@ -15,12 +20,17 @@ const AppNavigator = createAppContainer(
       Loading,
       Login,
       SignUp,
-      Main
+      Main,
+      Interests
     },
     {
       initialRouteName: "Loading"
     }
   )
+  // createStackNavigator({
+  //   Profile: { screen: Main },
+  //   Interests: { screen: Interests }
+  // })
 );
 
 export default class App extends React.Component {

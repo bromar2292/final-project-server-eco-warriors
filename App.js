@@ -2,10 +2,10 @@ import React from "react";
 import { StyleSheet, Platform, Image, Text, View } from "react-native";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 // import the different screens
-import Loading from "./components/Loading";
-import SignUp from "./components/Register";
-import Login from "./components/Login";
-import Main from "./components/HomePage";
+import Loading from "./pages/Loading";
+import SignUp from "./pages/Register";
+import Login from "./pages/Login";
+import Main from "./pages/HomePage";
 
 const AppNavigator = createAppContainer(
   createSwitchNavigator(
@@ -13,8 +13,8 @@ const AppNavigator = createAppContainer(
     // Read more at https://reactnavigation.org/docs/en/auth-flow.html
     {
       Loading,
-      SignUp,
       Login,
+      SignUp,
       Main
     },
     {

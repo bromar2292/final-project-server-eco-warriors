@@ -11,6 +11,7 @@ import SignUp from "./pages/Register";
 import Login from "./pages/Login";
 import Main from "./pages/HomePage";
 import Interests from "./pages/Interests";
+import Profile from "./pages/Profile";
 
 const AppNavigator = createAppContainer(
   createSwitchNavigator(
@@ -20,7 +21,7 @@ const AppNavigator = createAppContainer(
       Loading,
       Login,
       SignUp,
-      Main,
+      Profile,
       Interests
     },
     {

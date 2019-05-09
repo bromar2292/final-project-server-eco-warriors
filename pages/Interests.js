@@ -55,7 +55,7 @@ export default class Interests extends React.Component {
         </View>
         <View style={styles.container2}>
           <TabBar color="secondary" inactiveColor="black" activeColor="#669335">
-            <TabItem onPress={() => this.props.navigation.navigate("Main")}>
+            <TabItem onPress={() => this.props.navigation.navigate("Profile")}>
               <Icon name="person" />
               <Text style={{ color: "black", fontSize: 10 }}>Profile</Text>
             </TabItem>

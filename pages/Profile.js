@@ -1,4 +1,5 @@
 import React from "react";
+import firebase from "firebase";
 import { StyleSheet, View } from "react-native";
 
 import {
@@ -63,6 +64,17 @@ export default class Profile extends React.Component {
             Hello {currentUser && currentUser.email}
           </Text>
           <PureChart data={sampleData} type="pie" />
+          <Button
+            style={{
+              backgroundColor: "white",
+              width: "73%",
+              height: "8%",
+              borderRadius: 30
+            }}
+            onPress={this.handleSignOut}
+          >
+            <Text style={{ color: "black" }}>Sign Out</Text>
+          </Button>
           <Text style={{ fontSize: 20, fontWeight: "bold", padding: 5 }}>
             So far you have saved:
           </Text>

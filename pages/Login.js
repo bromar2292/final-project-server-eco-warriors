@@ -80,6 +80,17 @@ export default class Login extends React.Component {
           >
             <Text style={{ color: "black" }}>Sign Up</Text>
           </Button>
+          <Button
+            onPress={() => this.props.navigation.navigate("RegisterBus")}
+            style={{
+              backgroundColor: "white",
+              width: "73%",
+              height: "7%",
+              borderRadius: 30
+            }}
+          >
+            <Text style={{ color: "black" }}>Sign up for Business</Text>
+          </Button>
         </View>
       </LinearGradient>
     );

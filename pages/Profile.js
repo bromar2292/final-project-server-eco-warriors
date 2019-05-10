@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
+import firebase from "firebase";
 
 import {
   Button,
@@ -51,30 +52,48 @@ export default class Profile extends React.Component {
     return (
       <View style={styles.container}>
         <Header title="Profile" />
-        <View style={styles.body}>
-          <Text
-            style={{
-              fontSize: 33,
-              fontWeight: "bold",
-              marginTop: 160,
-              padding: 10
-            }}
-          >
-            Hello {currentUser && currentUser.email}
-          </Text>
-          <PureChart data={sampleData} type="pie" />
-          <Text style={{ fontSize: 20, fontWeight: "bold", padding: 5 }}>
-            So far you have saved:
-          </Text>
-        </View>
-        <View style={styles.body2}>
-          <MaterialCommunityIcons name="spray-bottle" size={45} color="grey" />
-          <Text>4 Turtles</Text>
-          <MaterialCommunityIcons name="tshirt-crew" size={45} color="grey" />
-          <Text>7 Hippos</Text>
-          <MaterialCommunityIcons name="food" size={45} color="grey" />
-          <Text>12 Cows</Text>
-        </View>
+        <ScrollView style={styles.mainContent}>
+          <View style={styles.body}>
+            <Text
+              style={{
+                fontSize: 33,
+                fontWeight: "bold",
+                // marginTop: 160,
+                padding: 10
+              }}
+            >
+              Hello {currentUser && currentUser.email}
+            </Text>
+            <PureChart data={sampleData} type="pie" />
+            <Button
+              style={{
+                backgroundColor: "white",
+                width: "73%",
+                height: "8%",
+                borderRadius: 30
+              }}
+              onPress={this.handleSignOut}
+            >
+              <Text style={{ color: "black" }}>Sign Out</Text>
+            </Button>
+            <Text style={{ fontSize: 20, fontWeight: "bold", padding: 5 }}>
+              So far you have saved:
+            </Text>
+          </View>
+          <View style={styles.body2}>
+            <MaterialCommunityIcons
+              name="spray-bottle"
+              size={45}
+              color="grey"
+            />
+            <Text>4 Turtles</Text>
+            <MaterialCommunityIcons name="tshirt-crew" size={45} color="grey" />
+            <Text>7 Hippos</Text>
+            <MaterialCommunityIcons name="food" size={45} color="grey" />
+            <Text>12 Cows</Text>
+          </View>
+        </ScrollView>
+
         <View style={styles.container2}>
           <TabBar color="secondary" inactiveColor="black" activeColor="#669335">
             <TabItem
@@ -103,7 +122,6 @@ export default class Profile extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: "center"
   },
   container2: {
@@ -114,18 +132,19 @@ const styles = StyleSheet.create({
     borderTopColor: "grey",
     // borderTopStyle: "solid",
     borderTopWidth: 1
-    // borderColor: "red",
-    // borderStyle: "solid",
-    // borderWidth: 2
+  },
+  mainContent: {
+    height: "75%",
+    width: "100%"
   },
   body: {
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
+    height: "60%"
   },
   body2: {
     justifyContent: "space-between",
-    position: "absolute",
-    top: 500,
-    alignItems: "center"
+    alignItems: "center",
+    height: "40%"
   }
 });

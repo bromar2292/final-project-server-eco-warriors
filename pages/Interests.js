@@ -4,7 +4,8 @@ import {
   View,
   Image,
   ScrollView,
-  ImageBackground
+  ImageBackground,
+  TouchableOpacity
 } from "react-native";
 import {
   Button,
@@ -63,44 +64,34 @@ export default class Interests extends React.Component {
         ]),
         (cosmetics = [
           {
-            name: "The Clean Kilo",
-            address: "1 Gibb Street, Birmingham, B9 4BF"
+            name: "Lush",
+            address: "143-144 New St, Birmingham, B2 4NY"
           },
           {
-            name: "Nature's Intention",
-            address: "2 High Street, Bromsgrove, B61 8HQ"
+            name: "The Body Shop",
+            address:
+              "Unit Su518, The Bullring Shopping Centre, Birmingham, B5 4BE"
           },
           {
-            name: "Indigo Wholefoods",
-            address: "50-52 St Mary's Row, Birmingham, B13 8JG"
+            name: "The Body Shop",
+            address: "Birmingham Station, Unit 14/15 The Concourse, B2 4XJ "
           }
         ]),
         (energy = [
           {
-            name: "The Clean Kilo",
-            address: "1 Gibb Street, Birmingham, B9 4BF"
-          },
-          {
-            name: "Nature's Intention",
-            address: "2 High Street, Bromsgrove, B61 8HQ"
-          },
-          {
-            name: "Indigo Wholefoods",
-            address: "50-52 St Mary's Row, Birmingham, B13 8JG"
+            name: "Green Tech Hub",
+            address:
+              "Office 1, Izabella House, 24-26 Regent Place, Birmingham, B1 3NJ"
           }
         ]),
         (clothes = [
           {
-            name: "The Clean Kilo",
-            address: "1 Gibb Street, Birmingham, B9 4BF"
+            name: "H&M",
+            address: "Smallbrook Queensway, Birmingham, B5 4BG"
           },
           {
-            name: "Nature's Intention",
-            address: "2 High Street, Bromsgrove, B61 8HQ"
-          },
-          {
-            name: "Indigo Wholefoods",
-            address: "50-52 St Mary's Row, Birmingham, B13 8JG"
+            name: "Oxfam",
+            address: "34 St Mary's Row, Birmingham, B13 8JG"
           }
         ])
       ],
@@ -123,6 +114,10 @@ export default class Interests extends React.Component {
     };
   }
 
+  updateCurrentCategory = category => {
+    this.setState(() => ({ currentCategory: [category] }));
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -138,96 +133,115 @@ export default class Interests extends React.Component {
             pageWidth={130}
             swipeThreshold={0.2}
           >
-            <ImageBackground
-              style={{ height: 130, width: 130 }}
-              source={require("../assets/530878d8-gp0stt3fm.jpg")}
+            <TouchableOpacity
+              onPress={() => this.updateCurrentCategory(plastic)}
             >
-              <View
-                style={{
-                  position: "absolute",
-                  top: 110,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  justifyContent: "center",
-                  alignItems: "flex-start"
-                }}
+              <ImageBackground
+                style={{ height: 130, width: 130 }}
+                source={require("../assets/530878d8-gp0stt3fm.jpg")}
               >
-                <Text style={{ color: "#FFFFFF" }}>Reduce Plastic</Text>
-              </View>
-            </ImageBackground>
-            <ImageBackground
-              style={{ height: 130, width: 130 }}
-              source={require("../assets/Black-Bean-Burgers-4-600x600.jpg")}
+                <View
+                  style={{
+                    position: "absolute",
+                    top: 110,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    justifyContent: "center",
+                    alignItems: "flex-start"
+                  }}
+                  onPress={() => this.updateCurrentCategory(plastic)}
+                >
+                  <Text style={{ color: "#FFFFFF" }}>Reduce Plastic</Text>
+                </View>
+              </ImageBackground>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.updateCurrentCategory(meat)}>
+              <ImageBackground
+                style={{ height: 130, width: 130 }}
+                source={require("../assets/Black-Bean-Burgers-4-600x600.jpg")}
+              >
+                <View
+                  style={{
+                    position: "absolute",
+                    top: 110,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    justifyContent: "center",
+                    alignItems: "flex-start"
+                  }}
+                >
+                  <Text style={{ color: "#FFFFFF" }}>Reduce Meat</Text>
+                </View>
+              </ImageBackground>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.updateCurrentCategory(cosmetics)}
             >
-              <View
-                style={{
-                  position: "absolute",
-                  top: 110,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  justifyContent: "center",
-                  alignItems: "flex-start"
-                }}
+              <ImageBackground
+                style={{ height: 130, width: 130 }}
+                source={require("../assets/lush.png")}
               >
-                <Text style={{ color: "#FFFFFF" }}>Reduce Meat</Text>
-              </View>
-            </ImageBackground>
-            <ImageBackground
-              style={{ height: 130, width: 130 }}
-              source={require("../assets/lush.png")}
+                <View
+                  style={{
+                    position: "absolute",
+                    top: 110,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    justifyContent: "center",
+                    alignItems: "flex-start"
+                  }}
+                >
+                  <Text style={{ color: "#FFFFFF" }}>Eco Cosmetics</Text>
+                </View>
+              </ImageBackground>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.updateCurrentCategory(energy)}
             >
-              <View
-                style={{
-                  position: "absolute",
-                  top: 110,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  justifyContent: "center",
-                  alignItems: "flex-start"
-                }}
+              <ImageBackground
+                style={{ height: 130, width: 130 }}
+                source={require("../assets/energy.jpg")}
               >
-                <Text style={{ color: "#FFFFFF" }}>Eco Cosmetics</Text>
-              </View>
-            </ImageBackground>
-            <ImageBackground
-              style={{ height: 130, width: 130 }}
-              source={require("../assets/energy.jpg")}
+                <View
+                  style={{
+                    position: "absolute",
+                    top: 110,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    justifyContent: "center",
+                    alignItems: "flex-start"
+                  }}
+                >
+                  <Text style={{ color: "#FFFFFF" }}>Energy Saving</Text>
+                </View>
+              </ImageBackground>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.updateCurrentCategory(clothes)}
             >
-              <View
-                style={{
-                  position: "absolute",
-                  top: 110,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  justifyContent: "center",
-                  alignItems: "flex-start"
-                }}
+              <ImageBackground
+                style={{ height: 130, width: 130 }}
+                source={require("../assets/clothes.jpg")}
               >
-                <Text style={{ color: "#FFFFFF" }}>Energy Saving</Text>
-              </View>
-            </ImageBackground>
-            <ImageBackground
-              style={{ height: 130, width: 130 }}
-              source={require("../assets/clothes.jpg")}
-            >
-              <View
-                style={{
-                  position: "absolute",
-                  top: 110,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  justifyContent: "center",
-                  alignItems: "flex-start"
-                }}
-              >
-                <Text style={{ color: "#FFFFFF" }}>Recycle Clothes</Text>
-              </View>
-            </ImageBackground>
+                <View
+                  style={{
+                    position: "absolute",
+                    top: 110,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    justifyContent: "center",
+                    alignItems: "flex-start"
+                  }}
+                >
+                  <Text style={{ color: "#FFFFFF" }}>Recycle Clothes</Text>
+                </View>
+              </ImageBackground>
+            </TouchableOpacity>
           </Carousel>
           {/* <Image
             style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
@@ -247,7 +261,16 @@ export default class Interests extends React.Component {
           /> */}
         </View>
         <ScrollView style={styles.cards}>
-          <Card
+          {this.state.currentCategory &&
+            this.state.currentCategory[0].map((item, idx) => (
+              <Card
+                title={item.name}
+                key={idx}
+                description={item.address}
+                onPress={() => this.props.navigation.navigate("BusinessInfo")}
+              />
+            ))}
+          {/* <Card
             title="The Clean Kilo"
             description="1 Gibb Street, Birmingham, B9 4BF"
             onPress={() => this.props.navigation.navigate("BusinessInfo")}
@@ -259,7 +282,7 @@ export default class Interests extends React.Component {
           <Card
             title="Indigo Wholefoods"
             description="50-52 St Mary's Row, Birmingham, B13 8JG"
-          />
+          /> */}
         </ScrollView>
         <View style={styles.container2}>
           <TabBar color="secondary" inactiveColor="black" activeColor="#669335">

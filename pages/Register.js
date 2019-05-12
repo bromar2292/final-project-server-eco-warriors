@@ -38,6 +38,7 @@ export default class SignUp extends React.Component {
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(currentUser => {
         console.log(currentUser.user.uid);
+        console.log(this.state.userType);
 
         //here we would create the QR code with the USER uid?
 
@@ -55,7 +56,7 @@ export default class SignUp extends React.Component {
           })
           .then(() => {
             console.log("inserted");
-            this.props.navigation.navigate("Main");
+            this.props.navigation.navigate("Profile");
           })
           .catch(error => this.setState({ errorMessage: error.message }));
       });

@@ -1,6 +1,7 @@
 import React from "react";
-import firebase from "firebase";
 import { StyleSheet, View } from "react-native";
+import firebase from "firebase";
+import Header from "./components/Header";
 
 import {
   Button,
@@ -13,8 +14,6 @@ import {
 } from "@99xt/first-born";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import PureChart from "react-native-pure-chart";
-
-import Header from "../pages/components/Header";
 
 export default class Profile extends React.Component {
   state = { currentUser: null };
@@ -63,18 +62,9 @@ export default class Profile extends React.Component {
           >
             Hello {currentUser && currentUser.email}
           </Text>
+          <Button onPress={this.handleSignOut}>Sign out</Button>
+
           <PureChart data={sampleData} type="pie" />
-          <Button
-            style={{
-              backgroundColor: "white",
-              width: "73%",
-              height: "8%",
-              borderRadius: 30
-            }}
-            onPress={this.handleSignOut}
-          >
-            <Text style={{ color: "black" }}>Sign Out</Text>
-          </Button>
           <Text style={{ fontSize: 20, fontWeight: "bold", padding: 5 }}>
             So far you have saved:
           </Text>

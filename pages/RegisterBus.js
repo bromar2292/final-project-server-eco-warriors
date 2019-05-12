@@ -46,7 +46,7 @@ export default class SignUp extends React.Component {
           })
           .then(() => {
             console.log("inserted business");
-            this.props.navigation.navigate("Main");
+            this.props.navigation.navigate("BusinessPointsPage");
           })
           .catch(error => this.setState({ errorMessage: error.message }));
       });

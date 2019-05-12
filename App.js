@@ -13,6 +13,7 @@ import Main from "./pages/HomePage";
 import Interests from "./pages/Interests";
 import Profile from "./pages/Profile";
 import RegisterBus from "./pages/RegisterBus";
+import BusinessPointsPage from "./pages/BusinessPointsPage";
 
 const AppNavigator = createAppContainer(
   createSwitchNavigator(
@@ -24,7 +25,8 @@ const AppNavigator = createAppContainer(
       SignUp,
       Profile,
       Interests,
-      RegisterBus
+      RegisterBus,
+      BusinessPointsPage
     },
     {
       initialRouteName: "Loading"

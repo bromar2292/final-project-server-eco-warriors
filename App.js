@@ -15,6 +15,7 @@ import Profile from "./pages/Profile";
 import RegisterBus from "./pages/RegisterBus";
 import BusinessPointsPage from "./pages/BusinessPointsPage";
 import BusinessInfo from "./pages/BusinessInfo";
+import QR from "./pages/QR";
 
 const AppNavigator = createAppContainer(
   createSwitchNavigator(
@@ -27,8 +28,9 @@ const AppNavigator = createAppContainer(
       Profile,
       Interests,
       RegisterBus,
-      BusinessPointsPage
-      BusinessInfo
+      BusinessPointsPage,
+      BusinessInfo,
+      QR
     },
     {
       initialRouteName: "Loading"

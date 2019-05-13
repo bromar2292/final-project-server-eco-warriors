@@ -104,18 +104,18 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    height: "100%",
-    borderColor: "red",
-    borderStyle: "solid",
-    borderWidth: 2
+    height: "100%"
+    // borderColor: "red",
+    // borderStyle: "solid",
+    // borderWidth: 2
   },
   body: {
     justifyContent: "center",
     alignItems: "center",
     height: "85%",
-    padding: "10%",
-    borderColor: "red",
-    borderStyle: "solid",
-    borderWidth: 2
+    padding: "10%"
+    // borderColor: "red",
+    // borderStyle: "solid",
+    // borderWidth: 2
   }
 });

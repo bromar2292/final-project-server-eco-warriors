@@ -15,6 +15,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-carousel-control": "^2.0.1",
     "react-native-firebase": "^5.3.1",
+    "react-native-keyboard-aware-scroll-view": "^0.8.0",
     "react-native-pure-chart": "0.0.24",
     "react-native-simple-radio-button": "^2.7.3",
     "react-navigation": "^3.9.1"

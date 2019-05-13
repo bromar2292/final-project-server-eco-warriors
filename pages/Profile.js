@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./components/Header";
 import { StyleSheet, View, ScrollView } from "react-native";
 import firebase from "firebase";
 
@@ -13,8 +14,6 @@ import {
 } from "@99xt/first-born";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import PureChart from "react-native-pure-chart";
-
-import Header from "../pages/components/Header";
 
 export default class Profile extends React.Component {
   state = { currentUser: null };
@@ -93,7 +92,6 @@ export default class Profile extends React.Component {
             <Text>12 Cows</Text>
           </View>
         </ScrollView>
-
         <View style={styles.container2}>
           <TabBar color="secondary" inactiveColor="black" activeColor="#669335">
             <TabItem

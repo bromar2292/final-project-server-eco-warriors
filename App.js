@@ -12,6 +12,8 @@ import Login from "./pages/Login";
 import Main from "./pages/HomePage";
 import Interests from "./pages/Interests";
 import Profile from "./pages/Profile";
+import RegisterBus from "./pages/RegisterBus";
+import BusinessPointsPage from "./pages/BusinessPointsPage";
 import BusinessInfo from "./pages/BusinessInfo";
 
 const AppNavigator = createAppContainer(
@@ -24,6 +26,8 @@ const AppNavigator = createAppContainer(
       SignUp,
       Profile,
       Interests,
+      RegisterBus,
+      BusinessPointsPage
       BusinessInfo
     },
     {

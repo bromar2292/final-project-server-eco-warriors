@@ -69,7 +69,9 @@ const styles = StyleSheet.create({
   },
   mainContent: {
     height: "75%",
-    width: "100%"
+    width: "100%",
+    paddingTop: "10%",
+    paddingLeft: "8%"
   },
   body: {
     flexDirection: "column",

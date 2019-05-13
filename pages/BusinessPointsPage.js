@@ -3,12 +3,30 @@ import firebase from "firebase";
 import { StyleSheet, View, TextInput } from "react-native";
 import Header from "./components/Header";
 import { Button, Text } from "@99xt/first-born";
+import { Constants, Permissions, BarCodeScanner } from "expo";
 
-export default class Profile extends React.Component {
-  state = { points: "0" };
+export default class BusinessPointsPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      points: "0",
+      hasCameraPermission: true,
+      scanned: false,
+      userID: ""
+    };
+  }
 
-  //   handleSubmit = () =>
-  //       firebase.
+  handleSubmit = () => {
+    firebase
+      .database()
+      .ref("users/" + this.state.userID)
+      .update({ points: this.state.points });
+  };
+
+  handleScan = ({ data }) => {
+    console.log("I have scanned");
+    this.setState(() => ({ scanned: true, userID: data }));
+  };
 
   handleSignOut = () => {
     firebase
@@ -22,45 +40,49 @@ export default class Profile extends React.Component {
       });
   };
   render() {
+    const { hasCameraPermission, scanned } = this.state;
     return (
       <View style={styles.container}>
         <Header title="Points Page" />
         <View style={styles.body}>
-          <Text
-            style={{
-              fontSize: 33,
-              fontWeight: "bold",
-              marginTop: 160,
-              padding: 10
-            }}
-          >
-            <TextInput
-              placeholder="Please enter points here"
-              placeholderTextColor="#FFFFFF"
-              style={{
-                width: "73%",
-                height: "7%",
-                borderBottomColor: "#FFFFFF",
-                borderBottomWidth: 1
-              }}
-              autoCapitalize="none"
-              onChangeText={points => this.setState({ points })}
-              value={this.state.points}
+          {scanned ? (
+            <>
+              <Text>
+                The username is "here we need to actually insert the name/
+                username of user"
+              </Text>
+              <TextInput
+                placeholder="Please enter points here"
+                placeholderTextColor="#a0a2a5"
+                style={{
+                  width: "73%",
+                  height: "7%",
+                  borderColor: "#a0a2a5",
+                  borderBottomWidth: 1
+                }}
+                autoCapitalize="none"
+                onChangeText={points => this.setState({ points })}
+                value={this.state.points}
+              />
+              <Button
+                style={{
+                  backgroundColor: "white",
+                  width: "73%",
+                  height: "8%",
+                  borderRadius: 30
+                }}
+                onPress={() => this.handleSubmit()}
+              >
+                <Text style={{ color: "black" }}>Submit points</Text>
+              </Button>
+            </>
+          ) : (
+            <BarCodeScanner
+              onBarCodeScanned={scanned ? undefined : this.handleScan}
+              barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
+              style={{ height: 300, width: 300 }}
             />
-            The username is "here we need to actually insert the name/ username
-            of user"
-          </Text>
-          <Button
-            style={{
-              backgroundColor: "white",
-              width: "73%",
-              height: "8%",
-              borderRadius: 30
-            }}
-            onPress={this.handleSubmit}
-          >
-            <Text style={{ color: "black" }}>Submit points</Text>
-          </Button>
+          )}
           <Button
             style={{
               backgroundColor: "white",
@@ -80,29 +102,20 @@ export default class Profile extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center"
-  },
-  container2: {
     alignItems: "center",
-    justifyContent: "flex-end",
-    backgroundColor: "#FFFFFF",
-    height: "10%",
-    borderTopColor: "grey",
-    // borderTopStyle: "solid",
-    borderTopWidth: 1
-    // borderColor: "red",
-    // borderStyle: "solid",
-    // borderWidth: 2
+    justifyContent: "center",
+    height: "100%",
+    borderColor: "red",
+    borderStyle: "solid",
+    borderWidth: 2
   },
   body: {
-    flexDirection: "column",
-    alignItems: "center"
-  },
-  body2: {
-    justifyContent: "space-between",
-    position: "absolute",
-    top: 500,
-    alignItems: "center"
+    justifyContent: "center",
+    alignItems: "center",
+    height: "85%",
+    padding: "10%",
+    borderColor: "red",
+    borderStyle: "solid",
+    borderWidth: 2
   }
 });

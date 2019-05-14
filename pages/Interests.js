@@ -1,24 +1,15 @@
 import React from "react";
+import { Text, Card } from "@99xt/first-born";
+import Footer from "./components/Footer";
+import Header from "../pages/components/Header";
+import Carousel from "react-native-carousel-control";
 import {
   StyleSheet,
   View,
-  Image,
   ScrollView,
   ImageBackground,
   TouchableOpacity
 } from "react-native";
-import {
-  Button,
-  Input,
-  Text,
-  TabBar,
-  TabItem,
-  Icon,
-  Card
-} from "@99xt/first-born";
-import MenuBar from "../pages/components/MenuBar";
-import Header from "../pages/components/Header";
-import Carousel from "react-native-carousel-control";
 
 export default class Interests extends React.Component {
   constructor(props) {
@@ -270,39 +261,8 @@ export default class Interests extends React.Component {
                 onPress={() => this.props.navigation.navigate("BusinessInfo")}
               />
             ))}
-          {/* <Card
-            title="The Clean Kilo"
-            description="1 Gibb Street, Birmingham, B9 4BF"
-            onPress={() => this.props.navigation.navigate("BusinessInfo")}
-          />
-          <Card
-            title="Nature's Intention"
-            description="2 High Street, Bromsgrove, B61 8HQ"
-          />
-          <Card
-            title="Indigo Wholefoods"
-            description="50-52 St Mary's Row, Birmingham, B13 8JG"
-          /> */}
         </ScrollView>
-        <View style={styles.container2}>
-          <TabBar color="secondary" inactiveColor="black" activeColor="#669335">
-            <TabItem onPress={() => this.props.navigation.navigate("Profile")}>
-              <Icon name="person" />
-              <Text style={{ color: "black", fontSize: 10 }}>Profile</Text>
-            </TabItem>
-            <TabItem
-              active
-              onPress={() => this.props.navigation.navigate("Interests")}
-            >
-              <Icon name="bookmark" />
-              <Text style={{ color: "black", fontSize: 10 }}>Interests</Text>
-            </TabItem>
-            <TabItem onPress={() => this.props.navigation.navigate("QR")}>
-              <Icon name="camera" />
-              <Text style={{ color: "black", fontSize: 10 }}>QR Code</Text>
-            </TabItem>
-          </TabBar>
-        </View>
+        <Footer {...this.props} />
       </View>
     );
   }
@@ -318,11 +278,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     height: "10%",
     borderTopColor: "grey",
-    // borderTopStyle: "solid",
     borderTopWidth: 1
-    // borderColor: "red",
-    // borderStyle: "solid",
-    // borderWidth: 2
   },
   carousel: {
     flexDirection: "row",
@@ -331,16 +287,10 @@ const styles = StyleSheet.create({
     height: "25%",
     marginLeft: "-20%",
     marginRight: "-20%"
-    // borderColor: "red",
-    // borderStyle: "solid",
-    // borderWidth: 2
   },
   cards: {
     height: "50%",
     width: "100%",
     paddingRight: 5
-    // borderColor: "red",
-    // borderStyle: "solid",
-    // borderWidth: 2
   }
 });

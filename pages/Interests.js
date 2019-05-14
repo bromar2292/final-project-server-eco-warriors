@@ -297,7 +297,7 @@ export default class Interests extends React.Component {
               <Icon name="bookmark" />
               <Text style={{ color: "black", fontSize: 10 }}>Interests</Text>
             </TabItem>
-            <TabItem>
+            <TabItem onPress={() => this.props.navigation.navigate("QR")}>
               <Icon name="camera" />
               <Text style={{ color: "black", fontSize: 10 }}>QR Code</Text>
             </TabItem>

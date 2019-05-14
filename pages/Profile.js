@@ -16,7 +16,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import PureChart from "react-native-pure-chart";
 
 export default class Profile extends React.Component {
-  state = { currentUser: null };
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: firebase.auth().currentUser
+    };
+  }
 
   handleSignOut = () => {
     firebase
@@ -61,7 +66,7 @@ export default class Profile extends React.Component {
                 padding: 10
               }}
             >
-              Hello {currentUser && currentUser.email}
+              Hello {this.state.user && this.state.user.email}
             </Text>
             <PureChart data={sampleData} type="pie" />
             <View style={styles.points}>
@@ -201,7 +206,7 @@ export default class Profile extends React.Component {
               <Icon name="bookmark" />
               <Text style={{ color: "black", fontSize: 10 }}>Interests</Text>
             </TabItem>
-            <TabItem>
+            <TabItem onPress={() => this.props.navigation.navigate("QR")}>
               <Icon name="camera" />
               <Text style={{ color: "black", fontSize: 10 }}>QR Code</Text>
             </TabItem>

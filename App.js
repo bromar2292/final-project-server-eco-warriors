@@ -27,7 +27,7 @@ const AppNavigator = createAppContainer(
       Profile,
       Interests,
       RegisterBus,
-      BusinessPointsPage
+      BusinessPointsPage,
       BusinessInfo
     },
     {

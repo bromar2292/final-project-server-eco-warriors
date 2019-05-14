@@ -10,7 +10,7 @@ import {
   TabBar,
   TabItem,
   Icon,
-  CardList
+  Card
 } from "@99xt/first-born";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import PureChart from "react-native-pure-chart";
@@ -38,19 +38,29 @@ export default class Profile extends React.Component {
     const { currentUser } = this.state;
     let sampleData = [
       {
-        value: 40,
-        label: "Plastic",
-        color: "lightgreen"
+        value: 20,
+        label: "Reduce Plastic",
+        color: "#0b6623"
       },
       {
-        value: 30,
-        label: "Meat",
-        color: "darkgreen"
+        value: 20,
+        label: "Reduce Meat",
+        color: "#708238"
       },
       {
-        value: 30,
-        label: "Clothing",
-        color: "green"
+        value: 20,
+        label: "Eco Cosmetics",
+        color: "#c7ea46"
+      },
+      {
+        value: 20,
+        label: "Recycle Clothes",
+        color: "#A9BA9D"
+      },
+      {
+        value: 20,
+        label: "Energy Saving",
+        color: "#4B5320"
       }
     ];
     return (
@@ -79,116 +89,17 @@ export default class Profile extends React.Component {
             </Text>
           </View>
           <View style={styles.body2}>
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
-              <View
-                style={{
-                  backgroundColor: "white",
-                  borderRadius: 7,
-                  overflow: "hidden",
-                  width: "90%",
-                  boxShadow: 10
-                }}
-              >
-                <View
-                  style={{ flexDirection: "row", padding: 10, width: "100%" }}
-                >
-                  <MaterialCommunityIcons
-                    name="spray-bottle"
-                    size={30}
-                    color="grey"
-                  />
-                  <Text style={{ color: "#777", padding: 5 }}>
-                    Description of the image
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={{
-                  backgroundColor: "white",
-                  borderRadius: 7,
-                  overflow: "hidden",
-                  width: "90%",
-                  boxShadow: 10
-                }}
-              >
-                <View
-                  style={{ flexDirection: "row", padding: 10, width: "100%" }}
-                >
-                  <MaterialCommunityIcons name="food" size={30} color="grey" />
-                  <Text style={{ color: "#777", padding: 5 }}>
-                    Description of the image
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={{
-                  backgroundColor: "white",
-                  borderRadius: 7,
-                  overflow: "hidden",
-                  width: "90%",
-                  boxShadow: 10
-                }}
-              >
-                <View
-                  style={{ flexDirection: "row", padding: 10, width: "100%" }}
-                >
-                  <MaterialCommunityIcons
-                    name="tshirt-crew"
-                    size={30}
-                    color="grey"
-                  />
-                  <Text style={{ color: "#777", padding: 5 }}>
-                    Description of the image
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={{
-                  backgroundColor: "white",
-                  borderRadius: 7,
-                  overflow: "hidden",
-                  width: "90%",
-                  boxShadow: 10
-                }}
-              >
-                <View
-                  style={{ flexDirection: "row", padding: 10, width: "100%" }}
-                >
-                  <MaterialCommunityIcons name="brush" size={30} color="grey" />
-                  <Text style={{ color: "#777", padding: 5 }}>
-                    Description of the image
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={{
-                  backgroundColor: "white",
-                  borderRadius: 7,
-                  overflow: "hidden",
-                  width: "90%",
-                  boxShadow: 10
-                }}
-              >
-                <View
-                  style={{ flexDirection: "row", padding: 10, width: "100%" }}
-                >
-                  <MaterialCommunityIcons
-                    name="lightbulb-on"
-                    size={30}
-                    color="grey"
-                  />
-                  <Text style={{ color: "#777", padding: 5 }}>
-                    Description of the image
-                  </Text>
-                </View>
-              </View>
-            </View>
+            <Card
+              title="Reduce Plastic"
+              description="This is the description."
+            />
+            <Card title="Reduce Meat" description="This is the description" />
+            <Card title="Eco Cosmetics" description="This is the description" />
+            <Card title="Energy Saving" description="This is the description" />
+            <Card
+              title="Recycle Clothes"
+              description="This is the description"
+            />
           </View>
         </ScrollView>
         <View style={styles.container2}>
@@ -236,13 +147,11 @@ const styles = StyleSheet.create({
   },
   body: {
     flexDirection: "column",
-    alignItems: "center",
-    height: "52%"
+    alignItems: "center"
   },
   body2: {
-    alignItems: "center",
     flexDirection: "column",
-    height: "50%"
+    paddingBottom: 10
   },
   points: {
     position: "absolute",

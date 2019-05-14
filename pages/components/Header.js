@@ -1,17 +1,35 @@
 import React from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
-import { AntDesign, Feather } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
+import firebase from "firebase";
 
 export default class App extends React.Component {
+  handleSignOut = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(function() {
+        // Sign-out successful.
+      })
+      .catch(function(error) {
+        // An error happened.
+      });
+  };
+
   render() {
     return (
       <View style={styles.header}>
         <View style={styles.header2}>
-          <AntDesign name="arrowleft" size={25} color="white" />
+          <Feather name="log-out" size={25} color="#669335" />
           <Text style={{ color: "white", fontSize: 20 }}>
             {this.props.title}
           </Text>
-          <Feather name="log-out" size={25} color="white" />
+          <Feather
+            name="log-out"
+            size={25}
+            color="white"
+            onPress={this.handleSignOut}
+          />
         </View>
       </View>
     );
@@ -28,8 +46,7 @@ const styles = StyleSheet.create({
   header2: {
     justifyContent: "space-between",
     flexDirection: "row",
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 30
+    marginTop: 30,
+    margin: 10
   }
 });

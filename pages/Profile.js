@@ -91,7 +91,7 @@ export default class Profile extends React.Component {
           <View style={styles.body2}>
             <Card
               title="Reduce Plastic"
-              description="This is the description"
+              description="This is the description."
             />
             <Card title="Reduce Meat" description="This is the description" />
             <Card title="Eco Cosmetics" description="This is the description" />

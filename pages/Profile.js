@@ -69,32 +69,126 @@ export default class Profile extends React.Component {
               Hello {this.state.user && this.state.user.email}
             </Text>
             <PureChart data={sampleData} type="pie" />
-            <Button
-              style={{
-                backgroundColor: "white",
-                width: "73%",
-                height: "8%",
-                borderRadius: 30
-              }}
-              onPress={this.handleSignOut}
-            >
-              <Text style={{ color: "black" }}>Sign Out</Text>
-            </Button>
+            <View style={styles.points}>
+              <Text style={{ color: "white", zIndex: 1, fontSize: 65 }}>
+                225
+              </Text>
+            </View>
             <Text style={{ fontSize: 20, fontWeight: "bold", padding: 5 }}>
               So far you have saved:
             </Text>
           </View>
           <View style={styles.body2}>
-            <MaterialCommunityIcons
-              name="spray-bottle"
-              size={45}
-              color="grey"
-            />
-            <Text>4 Turtles</Text>
-            <MaterialCommunityIcons name="tshirt-crew" size={45} color="grey" />
-            <Text>7 Hippos</Text>
-            <MaterialCommunityIcons name="food" size={45} color="grey" />
-            <Text>12 Cows</Text>
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
+              <View
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: 7,
+                  overflow: "hidden",
+                  width: "90%",
+                  boxShadow: 10
+                }}
+              >
+                <View
+                  style={{ flexDirection: "row", padding: 10, width: "100%" }}
+                >
+                  <MaterialCommunityIcons
+                    name="spray-bottle"
+                    size={30}
+                    color="grey"
+                  />
+                  <Text style={{ color: "#777", padding: 5 }}>
+                    Description of the image
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: 7,
+                  overflow: "hidden",
+                  width: "90%",
+                  boxShadow: 10
+                }}
+              >
+                <View
+                  style={{ flexDirection: "row", padding: 10, width: "100%" }}
+                >
+                  <MaterialCommunityIcons name="food" size={30} color="grey" />
+                  <Text style={{ color: "#777", padding: 5 }}>
+                    Description of the image
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: 7,
+                  overflow: "hidden",
+                  width: "90%",
+                  boxShadow: 10
+                }}
+              >
+                <View
+                  style={{ flexDirection: "row", padding: 10, width: "100%" }}
+                >
+                  <MaterialCommunityIcons
+                    name="tshirt-crew"
+                    size={30}
+                    color="grey"
+                  />
+                  <Text style={{ color: "#777", padding: 5 }}>
+                    Description of the image
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: 7,
+                  overflow: "hidden",
+                  width: "90%",
+                  boxShadow: 10
+                }}
+              >
+                <View
+                  style={{ flexDirection: "row", padding: 10, width: "100%" }}
+                >
+                  <MaterialCommunityIcons name="brush" size={30} color="grey" />
+                  <Text style={{ color: "#777", padding: 5 }}>
+                    Description of the image
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: 7,
+                  overflow: "hidden",
+                  width: "90%",
+                  boxShadow: 10
+                }}
+              >
+                <View
+                  style={{ flexDirection: "row", padding: 10, width: "100%" }}
+                >
+                  <MaterialCommunityIcons
+                    name="lightbulb-on"
+                    size={30}
+                    color="grey"
+                  />
+                  <Text style={{ color: "#777", padding: 5 }}>
+                    Description of the image
+                  </Text>
+                </View>
+              </View>
+            </View>
           </View>
         </ScrollView>
         <View style={styles.container2}>
@@ -125,29 +219,35 @@ export default class Profile extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center"
+    alignItems: "center",
+    flex: 1
   },
   container2: {
     alignItems: "center",
     justifyContent: "flex-end",
     backgroundColor: "#FFFFFF",
-    height: "10%",
-    borderTopColor: "grey",
-    // borderTopStyle: "solid",
+    // height: "8.8%",
+    borderTopColor: "lightgrey",
     borderTopWidth: 1
   },
   mainContent: {
-    height: "75%",
+    height: "80%",
     width: "100%"
   },
   body: {
     flexDirection: "column",
     alignItems: "center",
-    height: "60%"
+    height: "52%"
   },
   body2: {
-    justifyContent: "space-between",
     alignItems: "center",
-    height: "40%"
+    flexDirection: "column",
+    height: "50%"
+  },
+  points: {
+    position: "absolute",
+    justifyContent: "center",
+    alignItems: "center",
+    top: 120
   }
 });

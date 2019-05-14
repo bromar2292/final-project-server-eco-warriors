@@ -55,7 +55,7 @@ export default class Profile extends React.Component {
     ];
     return (
       <View style={styles.container}>
-        <Header title="Profile" />
+        <Header title="Profile" isLoggedIn={true} />
         <ScrollView style={styles.mainContent}>
           <View style={styles.body}>
             <Text

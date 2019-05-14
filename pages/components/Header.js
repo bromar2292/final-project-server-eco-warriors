@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import firebase from "firebase";
 
-export default class App extends React.Component {
+export default class Header extends React.Component {
   handleSignOut = () => {
     firebase
       .auth()
@@ -17,22 +17,36 @@ export default class App extends React.Component {
   };
 
   render() {
-    return (
-      <View style={styles.header}>
-        <View style={styles.header2}>
-          <Feather name="log-out" size={25} color="#669335" />
-          <Text style={{ color: "white", fontSize: 20 }}>
-            {this.props.title}
-          </Text>
-          <Feather
-            name="log-out"
-            size={25}
-            color="white"
-            onPress={this.handleSignOut}
-          />
+    if (this.props.isLoggedIn) {
+      return (
+        <View style={styles.header}>
+          <View style={styles.header2}>
+            <Feather name="log-out" size={25} color="#669335" />
+            <Text style={{ color: "white", fontSize: 20 }}>
+              {this.props.title}
+            </Text>
+            <Feather
+              name="log-out"
+              size={25}
+              color="white"
+              onPress={this.handleSignOut}
+            />
+          </View>
         </View>
-      </View>
-    );
+      );
+    } else {
+      return (
+        <View style={styles.header}>
+          <View style={styles.header2}>
+            <Feather name="log-out" size={25} color="#669335" />
+            <Text style={{ color: "white", fontSize: 20 }}>
+              {this.props.title}
+            </Text>
+            <Feather name="log-out" size={25} color="#669335" />
+          </View>
+        </View>
+      );
+    }
   }
 }
 

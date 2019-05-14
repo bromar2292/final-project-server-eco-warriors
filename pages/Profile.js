@@ -19,9 +19,24 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: firebase.auth().currentUser
+      name: "",
+      points: ""
     };
   }
+
+  componentDidMount = () => {
+    firebase
+      .database()
+      .ref("users/" + firebase.auth().currentUser.uid)
+      .on("value", snapshot => {
+        if (snapshot.val()) {
+          this.setState({
+            name: snapshot.val().firstName,
+            points: snapshot.val().points
+          });
+        }
+      });
+  };
 
   handleSignOut = () => {
     firebase
@@ -76,12 +91,12 @@ export default class Profile extends React.Component {
                 padding: 10
               }}
             >
-              Hello {this.state.user && this.state.user.email}
+              Hello {this.state.name}
             </Text>
             <PureChart data={sampleData} type="pie" />
             <View style={styles.points}>
               <Text style={{ color: "white", zIndex: 1, fontSize: 65 }}>
-                225
+                {this.state.points}
               </Text>
             </View>
             <Text style={{ fontSize: 20, fontWeight: "bold", padding: 5 }}>

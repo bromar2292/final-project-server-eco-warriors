@@ -9,48 +9,55 @@ export default class BusinessPointsPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      points: "0",
+      points: 0,
       hasCameraPermission: true,
       scanned: false,
-      userID: ""
+      userID: "",
+      currentPoints: 0,
+      usersName: ""
     };
   }
 
   handleSubmit = () => {
+    let newPoints =
+      Number(this.state.points) + Number(this.state.currentPoints);
     firebase
       .database()
       .ref("users/" + this.state.userID)
-      .update({ points: this.state.points });
+      .update({ points: newPoints });
+    this.setState(() => ({
+      currentPoints: newPoints
+    }));
   };
 
   handleScan = ({ data }) => {
     console.log("I have scanned");
-    this.setState(() => ({ scanned: true, userID: data }));
-  };
-
-  handleSignOut = () => {
     firebase
-      .auth()
-      .signOut()
-      .then(function() {
-        // Sign-out successful.
-      })
-      .catch(function(error) {
-        // An error happened!
+      .database()
+      .ref("users/" + data)
+      .on("value", snapshot => {
+        if (snapshot.val()) {
+          this.setState({
+            scanned: true,
+            usersName: snapshot.val().firstName,
+            currentPoints: Number(snapshot.val().points),
+            userID: data
+          });
+        }
       });
   };
+
   render() {
     const { hasCameraPermission, scanned } = this.state;
     return (
       <View style={styles.container}>
-        <Header title="Points Page" />
+        <Header
+          title="Points Page" // isLoggedIn={true}
+        />
         <View style={styles.body}>
           {scanned ? (
             <>
-              <Text>
-                The username is "here we need to actually insert the name/
-                username of user"
-              </Text>
+              <Text>How much has {this.state.usersName} spent today?</Text>
               <TextInput
                 placeholder="Please enter points here"
                 placeholderTextColor="#a0a2a5"
@@ -60,9 +67,10 @@ export default class BusinessPointsPage extends React.Component {
                   borderColor: "#a0a2a5",
                   borderBottomWidth: 1
                 }}
+                keyboardType="numeric"
                 autoCapitalize="none"
                 onChangeText={points => this.setState({ points })}
-                value={this.state.points}
+                value={String(this.state.points)}
               />
               <Button
                 style={{
@@ -83,17 +91,6 @@ export default class BusinessPointsPage extends React.Component {
               style={{ height: 300, width: 300 }}
             />
           )}
-          <Button
-            style={{
-              backgroundColor: "white",
-              width: "73%",
-              height: "8%",
-              borderRadius: 30
-            }}
-            onPress={this.handleSignOut}
-          >
-            <Text style={{ color: "black" }}>Sign Out</Text>
-          </Button>
         </View>
       </View>
     );

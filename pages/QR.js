@@ -21,6 +21,7 @@ export default class QR extends React.Component {
       user: firebase.auth().currentUser
     };
   }
+
   render() {
     return (
       <View style={styles.container}>

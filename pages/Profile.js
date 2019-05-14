@@ -1,18 +1,10 @@
 import React from "react";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { StyleSheet, View, ScrollView } from "react-native";
 import firebase from "firebase";
 
-import {
-  Button,
-  Input,
-  Text,
-  TabBar,
-  TabItem,
-  Icon,
-  Card
-} from "@99xt/first-born";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Text, Card } from "@99xt/first-born";
 import PureChart from "react-native-pure-chart";
 
 export default class Profile extends React.Component {
@@ -65,14 +57,13 @@ export default class Profile extends React.Component {
     ];
     return (
       <View style={styles.container}>
-        <Header title="Profile" isLoggedIn={true} />
+        <Header title="Profile" isLoggedIn />
         <ScrollView style={styles.mainContent}>
           <View style={styles.body}>
             <Text
               style={{
                 fontSize: 33,
                 fontWeight: "bold",
-                // marginTop: 160,
                 padding: 10
               }}
             >
@@ -102,27 +93,7 @@ export default class Profile extends React.Component {
             />
           </View>
         </ScrollView>
-        <View style={styles.container2}>
-          <TabBar color="secondary" inactiveColor="black" activeColor="#669335">
-            <TabItem
-              active
-              onPress={() => this.props.navigation.navigate("Profile")}
-            >
-              <Icon name="person" />
-              <Text style={{ color: "black", fontSize: 10 }}>Profile</Text>
-            </TabItem>
-            <TabItem
-              onPress={() => this.props.navigation.navigate("Interests")}
-            >
-              <Icon name="bookmark" />
-              <Text style={{ color: "black", fontSize: 10 }}>Interests</Text>
-            </TabItem>
-            <TabItem onPress={() => this.props.navigation.navigate("QR")}>
-              <Icon name="camera" />
-              <Text style={{ color: "black", fontSize: 10 }}>QR Code</Text>
-            </TabItem>
-          </TabBar>
-        </View>
+        <Footer {...this.props} />
       </View>
     );
   }
@@ -137,7 +108,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     backgroundColor: "#FFFFFF",
-    // height: "8.8%",
     borderTopColor: "lightgrey",
     borderTopWidth: 1
   },

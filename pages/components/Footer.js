@@ -1,13 +1,13 @@
-import React from "react";
-import { StyleSheet, View, Image } from "react-native";
-import { Button, Input, Text, TabBar, TabItem, Icon } from "@99xt/first-born";
+import React, { Component } from "react";
+import { StyleSheet, View, ScrollView } from "react-native";
+import { Text, TabBar, TabItem, Icon, CardList } from "@99xt/first-born";
 
-export default class MenuBar extends React.Component {
+export default class Footer extends Component {
   render() {
     return (
       <View style={styles.container}>
         <TabBar color="secondary" inactiveColor="black" activeColor="#669335">
-          <TabItem>
+          <TabItem onPress={() => this.props.navigation.navigate("Profile")}>
             <Icon name="person" />
             <Text style={{ color: "black", fontSize: 10 }}>Profile</Text>
           </TabItem>
@@ -15,7 +15,7 @@ export default class MenuBar extends React.Component {
             <Icon name="bookmark" />
             <Text style={{ color: "black", fontSize: 10 }}>Interests</Text>
           </TabItem>
-          <TabItem>
+          <TabItem active onPress={() => this.props.navigation.navigate("QR")}>
             <Icon name="camera" />
             <Text style={{ color: "black", fontSize: 10 }}>QR Code</Text>
           </TabItem>
@@ -32,10 +32,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     height: "10%",
     borderTopColor: "grey",
-    // borderTopStyle: "solid",
     borderTopWidth: 1
-    // borderColor: "red",
-    // borderStyle: "solid",
-    // borderWidth: 2
   }
 });

@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./components/Footer";
 import {
   StyleSheet,
   View,
@@ -20,7 +21,6 @@ export default class BusinessInfo extends React.Component {
           >
             <Text style={styles.mainTitle}>The Clean Kilo</Text>
           </ImageBackground>
-
           <View style={styles.description}>
             <Text style={styles.title}>Description</Text>
             <Text>0 waste plastic reduction shop</Text>
@@ -102,28 +102,7 @@ export default class BusinessInfo extends React.Component {
             source={require("../assets/cleankilomap.png")}
           />
         </ScrollView>
-
-        <View style={styles.container2}>
-          <TabBar color="secondary" inactiveColor="black" activeColor="#669335">
-            <TabItem
-              active
-              onPress={() => this.props.navigation.navigate("Profile")}
-            >
-              <Icon name="person" />
-              <Text style={{ color: "black", fontSize: 10 }}>Profile</Text>
-            </TabItem>
-            <TabItem
-              onPress={() => this.props.navigation.navigate("Interests")}
-            >
-              <Icon name="bookmark" />
-              <Text style={{ color: "black", fontSize: 10 }}>Interests</Text>
-            </TabItem>
-            <TabItem>
-              <Icon name="camera" />
-              <Text style={{ color: "black", fontSize: 10 }}>QR Code</Text>
-            </TabItem>
-          </TabBar>
-        </View>
+        <Footer {...this.props} />
       </View>
     );
   }
@@ -163,8 +142,6 @@ const styles = StyleSheet.create({
   description: {
     flexDirection: "column",
     justifyContent: "flex-start",
-    // border: "10%",
-    // padding: 10
     marginLeft: 10
   },
   openingTimes: {},
@@ -177,15 +154,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 7
     // padding: 5
-  },
-
-  container2: {
-    alignItems: "center",
-    justifyContent: "flex-end",
-    backgroundColor: "#FFFFFF",
-    borderTopColor: "grey",
-    // borderTopStyle: "solid",
-    borderTopWidth: 1
   },
   divider: {
     borderBottomColor: "lightgrey",

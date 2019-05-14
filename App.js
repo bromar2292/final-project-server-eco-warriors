@@ -9,7 +9,6 @@ import {
 import Loading from "./pages/Loading";
 import SignUp from "./pages/Register";
 import Login from "./pages/Login";
-import Main from "./pages/HomePage";
 import Interests from "./pages/Interests";
 import Profile from "./pages/Profile";
 import RegisterBus from "./pages/RegisterBus";

@@ -17,36 +17,26 @@ export default class Header extends React.Component {
   };
 
   render() {
-    if (this.props.isLoggedIn) {
-      return (
-        <View style={styles.header}>
-          <View style={styles.header2}>
-            <Feather name="log-out" size={25} color="#669335" />
-            <Text style={{ color: "white", fontSize: 20 }}>
-              {this.props.title}
-            </Text>
+    return (
+      <View style={styles.header}>
+        <View style={styles.header2}>
+          <Feather name="log-out" size={25} color="#669335" />
+          <Text style={{ color: "white", fontSize: 20 }}>
+            {this.props.title}
+          </Text>
+          {this.props.isLoggedIn ? (
             <Feather
               name="log-out"
               size={25}
               color="white"
               onPress={this.handleSignOut}
             />
-          </View>
-        </View>
-      );
-    } else {
-      return (
-        <View style={styles.header}>
-          <View style={styles.header2}>
+          ) : (
             <Feather name="log-out" size={25} color="#669335" />
-            <Text style={{ color: "white", fontSize: 20 }}>
-              {this.props.title}
-            </Text>
-            <Feather name="log-out" size={25} color="#669335" />
-          </View>
+          )}
         </View>
-      );
-    }
+      </View>
+    );
   }
 }
 

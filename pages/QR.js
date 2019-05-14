@@ -18,15 +18,30 @@ export default class QR extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: firebase.auth().currentUser
+      user: firebase.auth().currentUser,
+      points: ""
     };
   }
+
+  componentDidMount = () => {
+    firebase
+      .database()
+      .ref("users/" + firebase.auth().currentUser.uid)
+      .on("value", snapshot => {
+        if (snapshot.val()) {
+          this.setState({
+            points: snapshot.val().points
+          });
+        }
+      });
+  };
+
   render() {
     return (
       <View style={styles.container}>
         <Header title="QR Code" />
         <ScrollView style={styles.mainContent}>
-          <QRCode value={this.state.user.uid} size={300} />
+          <QRCode value={[this.state.user.uid, this.state.points]} size={300} />
         </ScrollView>
         <View style={styles.container2}>
           <TabBar color="secondary" inactiveColor="black" activeColor="#669335">

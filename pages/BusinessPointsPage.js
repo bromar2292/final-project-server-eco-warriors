@@ -25,6 +25,7 @@ export default class BusinessPointsPage extends React.Component {
 
   handleScan = ({ data }) => {
     console.log("I have scanned");
+    console.log(data);
     this.setState(() => ({ scanned: true, userID: data }));
   };
 

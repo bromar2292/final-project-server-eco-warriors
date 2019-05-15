@@ -51,9 +51,7 @@ export default class BusinessPointsPage extends React.Component {
     const { hasCameraPermission, scanned } = this.state;
     return (
       <View style={styles.container}>
-        <Header
-          title="Points Page" // isLoggedIn={true}
-        />
+        <Header title="Points Page" isLoggedIn={true} />
         <View style={styles.body}>
           {scanned ? (
             <>

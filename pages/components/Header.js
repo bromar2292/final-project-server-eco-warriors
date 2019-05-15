@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import firebase from "firebase";
 
 export default class Header extends React.Component {
@@ -25,9 +25,9 @@ export default class Header extends React.Component {
             {this.props.title}
           </Text>
           {this.props.isLoggedIn ? (
-            <Feather
-              name="log-out"
-              size={25}
+            <MaterialCommunityIcons
+              name="exit-run"
+              size={30}
               color="white"
               onPress={this.handleSignOut}
             />

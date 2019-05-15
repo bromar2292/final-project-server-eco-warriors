@@ -262,7 +262,7 @@ export default class Interests extends React.Component {
               />
             ))}
         </ScrollView>
-        <Footer {...this.props} />
+        <Footer {...this.props} active="Interests" />
       </View>
     );
   }

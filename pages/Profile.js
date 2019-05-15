@@ -108,7 +108,7 @@ export default class Profile extends React.Component {
             />
           </View>
         </ScrollView>
-        <Footer {...this.props} />
+        <Footer {...this.props} active="Profile" />
       </View>
     );
   }

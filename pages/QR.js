@@ -20,7 +20,7 @@ export default class QR extends React.Component {
         <ScrollView style={styles.mainContent}>
           <QRCode value={this.state.user.uid} size={300} />
         </ScrollView>
-        <Footer {...this.props} />
+        <Footer {...this.props} active="QR" />
       </View>
     );
   }
